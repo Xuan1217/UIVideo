@@ -3,6 +3,7 @@
 
 #include <QVideoWidget>
 #include <QDebug>
+#include <QDesktopWidget>
 
 class VideoWidget : public QVideoWidget {
     Q_OBJECT
