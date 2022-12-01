@@ -72,6 +72,17 @@ void Widget::on_fullscreen_clicked(){
 
 void Widget::on_mute_clicked(){
 //click the mute to zero-music
+    switch (player->volume())
+    {
+        case 0:
+            player->setVolume(20);
+            ui->mute->setIcon(QIcon(":/icon/volumeHigh.png"));
+            break;
+        default:
+            player->setVolume(0);
+            ui->mute->setIcon(QIcon(":/icon/volumeDisable.png"));
+            break;
+    }
 }
 
 
