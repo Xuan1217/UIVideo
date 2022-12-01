@@ -66,8 +66,13 @@ void Widget::on_pause_clicked(){
 
 
 void Widget::on_fullscreen_clicked(){
-    setWindowFlags (Qt::Window);
-    showFullScreen();
+    if (isFullScreen()) {
+        setWindowFlags (Qt::SubWindow);
+        showNormal();
+    } else {
+        setWindowFlags (Qt::Window);
+        showFullScreen();
+    }
 }
 
 
@@ -88,12 +93,13 @@ void Widget::on_mute_clicked(){
 
 
 void Widget::on_backward_clicked(){
-//back 3s
+    player->setPosition(player->position()-3000);
 }
 
 
 void Widget::on_forward_clicked(){
 //next 3s
+    player->setPosition(player->position()+3000);
 }
 
 
@@ -175,7 +181,7 @@ void Widget::on_menu_clicked() {
 
 
 void Widget::on_next_clicked() {
-//下一个
+//next vedio
 }
 
 void Widget::getbuttonindex(int index){
@@ -303,10 +309,25 @@ void Widget::creatbuttonList() {
 
 void Widget::keyPressEvent(QKeyEvent *event) {
 //click space pause
+    if (event->key() == Qt::Key_Space) {
+        on_pause_clicked();
+    }
 //click left back 3s
+    if(event->key() == Qt::Key_Right || event->key() == Qt::Key_D){
+        on_forward_clicked();
+    }
 //click right next 3s
+    if(event->key() == Qt::Key_Left || event->key() == Qt::Key_A){
+        on_backward_clicked();
+    }
 //click up volume up
+    if(event->key() == Qt::Key_Up || event->key() == Qt::Key_W){
+        player->setVolume(player->volume()+5);
+    }
 //click down volume down
+    if(event->key() == Qt::Key_Down || event->key() == Qt::Key_S){
+        player->setVolume(player->volume()-5);
+    }
 }
 
 
