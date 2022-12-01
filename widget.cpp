@@ -66,7 +66,8 @@ void Widget::on_pause_clicked(){
 
 
 void Widget::on_fullscreen_clicked(){
-//fullscreen
+    setWindowFlags (Qt::Window);
+    showFullScreen();
 }
 
 
@@ -98,6 +99,20 @@ void Widget::on_forward_clicked(){
 
 void Widget::on_speed_clicked(){
 //speed
+    int rate = player->playbackRate()/1;
+    switch(rate)
+    {
+    case 1:player->setPlaybackRate(2);
+        ui->speed->setIcon(QIcon(":/icon/speedx2.png"));
+        break;
+    case 2: player->setPlaybackRate(1);
+        ui->speed->setIcon(QIcon(":/icon/speed.png"));
+        break;
+    default: player->setPlaybackRate(1);
+        ui->speed->setIcon(QIcon(":/icon/speed.png"));
+        break;
+    }
+
 }
 
 
