@@ -8,3 +8,5 @@
 12.01 Pengchen Chen: VideoWidget Part Completed.
 
 12.01 Wuyuan Xu: Full Screen
+
+12.01 Xiaokang Ye: Double Speed
