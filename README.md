@@ -9,4 +9,5 @@
 
 12.01 Wuyuan Xu: Full Screen
 
-12.01 Xiaokang Ye: Double Speed, Backward $ Forward, Keyboard Controllor
+12.01 Xiaokang Ye: Double Speed, Backward & Forward, Keyboard Controllor，UI Full Screen
+
