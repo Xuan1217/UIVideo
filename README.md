@@ -11,3 +11,4 @@
 
 12.01 Xiaokang Ye: Double Speed, Backward & Forward, Keyboard Controllor，UI Full Screen
 
+12.02 Hang Sun: Set gitignore, video progress bar, function of clicking next and video tittle

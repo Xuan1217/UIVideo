@@ -18,6 +18,9 @@ Widget::Widget(QWidget *parent)
 
 
     //Set volume progress bar
+    connect(player,&QMediaPlayer::volumeChanged,ui->volumeslider,&QSlider::setValue);
+    connect(ui->volumeslider,&QSlider::sliderMoved,player,&QMediaPlayer::setVolume);
+    connect (player,SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (volumeStateChanged()));
 
     //Detect video status and change button icon
     QTimer *mTimer = new QTimer(nullptr);
@@ -93,17 +96,26 @@ void Widget::on_mute_clicked(){
 
 
 void Widget::on_backward_clicked(){
+    if(playernumbers == 0){
+        return;
+    }
     player->setPosition(player->position()-3000);
 }
 
 
 void Widget::on_forward_clicked(){
+    if(playernumbers == 0){
+        return;
+    }
 //next 3s
     player->setPosition(player->position()+3000);
 }
 
 
 void Widget::on_speed_clicked(){
+    if(playernumbers == 0){
+        return;
+    }
 //speed
     int rate = player->playbackRate()/1;
     switch(rate)
@@ -182,6 +194,18 @@ void Widget::on_menu_clicked() {
 
 void Widget::on_next_clicked() {
 //next vedio
+    if(playernumbers == 0){
+        return;
+    }
+    if(playerindex == playernumbers-1){
+        playerindex =  0;
+    }
+    else {
+         playerindex= playerindex+1;
+    }
+    TheButtonInfo* button = player->getButtons()->at(playerindex)->info;
+    player->jumpTo(button);
+    setVideoTitle(playerindex);
 }
 
 void Widget::getbuttonindex(int index){
@@ -193,7 +217,10 @@ void Widget::getbuttonindex(int index){
 
 void Widget::setVideoTitle(int index){
 //set video tittle
-
+    QString title = player->getButtons()->at(index)->info->videoname;
+    ui->videoname->setText(title);
+    playertitle=title;
+    qDebug()<<playertitle;
 }
 
 void Widget::updateduration(){
