@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pic/24gf-fullScreenEnter3.png</file>
+        <file>pic/24gf-fullScreenExit.png</file>
+        <file>pic/24gf-tags.png</file>
+        <file>pic/24gf-videoCamera.png</file>
+        <file>pic/24gf-volumeCross (1).png</file>
+        <file>pic/24gf-volumeCross.png</file>
+        <file>pic/24gf-volumeHigh.png</file>
+        <file>pic/24gf-volumeZero (1).png</file>
+        <file>pic/24gf-volumeZero.png</file>
+        <file>pic/倍速播放.png</file>
+        <file>pic/add.png</file>
+        <file>pic/backward.png</file>
+        <file>pic/danqu.png</file>
+        <file>pic/daotui.png</file>
+        <file>pic/file-add.png</file>
+        <file>pic/forward.png</file>
+        <file>pic/kuaijin.png</file>
+        <file>pic/liebiao.png</file>
+        <file>pic/Maximize-2.png</file>
+        <file>pic/Maximize-3.png</file>
+        <file>pic/Minimize-1.png</file>
+        <file>pic/Minimize-2.png</file>
+        <file>pic/more.png</file>
+        <file>pic/pause.png</file>
+        <file>pic/play_fill.png</file>
+        <file>pic/Shut down-1.png</file>
+        <file>pic/Shut down-2.png</file>
+        <file>pic/user.png</file>
+        <file>pic/video.png</file>
+        <file>pic/Videotape-1.png</file>
+        <file>pic/xunhuan.png</file>
+        <file>pic/裁剪 (1).png</file>
+    </qresource>
+</RCC>

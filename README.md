@@ -12,5 +12,5 @@
 12.01 Xiaokang Ye: Double Speed, Backward & Forward, Keyboard Controllor，UI Full Screen
 
 12.02 Hang Sun: Set gitignore, video progress bar, function of clicking next and video tittle
-
 12.11 Hang Sun: Set a new UI but not responsive
+12.12 Hang Sun: Responsive and fuction of change mode and screenshot

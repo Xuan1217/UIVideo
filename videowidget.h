@@ -2,8 +2,9 @@
 #define VIDEOWIDGET_H
 
 #include <QVideoWidget>
+#include <QKeyEvent>
+#include <QMouseEvent>
 #include <QDebug>
-#include <QDesktopWidget>
 
 class VideoWidget : public QVideoWidget {
     Q_OBJECT
@@ -14,7 +15,6 @@ public:
 protected:
     void keyPressEvent(QKeyEvent *event) override;
     void mouseDoubleClickEvent(QMouseEvent *event) override;
-    //void mousePressEvent(QMouseEvent *event) override;
 };
 
 #endif // VIDEOWIDGET_H
