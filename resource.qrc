@@ -23,5 +23,28 @@
         <file>icon/volumeHigh.png</file>
         <file>icon/upload.png</file>
         <file>icon/logo.png</file>
+        <file>icon/24gf-backward.png</file>
+        <file>icon/24gf-camera3.png</file>
+        <file>icon/24gf-forward.png</file>
+        <file>icon/24gf-fullScreenEnter3.png</file>
+        <file>icon/24gf-fullScreenExit.png</file>
+        <file>icon/24gf-tags.png</file>
+        <file>icon/24gf-videoCamera.png</file>
+        <file>icon/24gf-volumeCross.png</file>
+        <file>icon/24gf-volumeHigh.png</file>
+        <file>icon/24gf-volumeZero.png</file>
+        <file>icon/icon_添加.png</file>
+        <file>icon/Maximize-3.png</file>
+        <file>icon/Minimize-1.png</file>
+        <file>icon/play_fill.png</file>
+        <file>icon/Shut down-1.png</file>
+        <file>icon/Videotape-1.png</file>
+        <file>icon/单曲循环.png</file>
+        <file>icon/倒退.png</file>
+        <file>icon/更多.png</file>
+        <file>icon/快进.png</file>
+        <file>icon/列表.png</file>
+        <file>icon/列表循环.png</file>
+        <file>icon/用户.png</file>
     </qresource>
 </RCC>
