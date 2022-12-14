@@ -16,6 +16,9 @@
     <height>800</height>
    </size>
   </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -376,7 +379,6 @@ QPushButton:pressed
           <font>
            <family>Futura</family>
            <pointsize>24</pointsize>
-           <weight>9</weight>
            <italic>false</italic>
            <bold>false</bold>
           </font>
@@ -1154,63 +1156,58 @@ QPushButton:pressed
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
-           <widget class="QWidget" name="verticalLayoutWidget_2">
+           <widget class="QWidget" name="widget_2" native="true">
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>0</y>
-              <width>301</width>
-              <height>251</height>
+              <y>260</y>
+              <width>298</width>
+              <height>301</height>
              </rect>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_4"/>
-           </widget>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_2" native="true">
-           <widget class="QScrollArea" name="scrollArea">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>-13</y>
-              <width>300</width>
-              <height>571</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>300</width>
-              <height>300</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>500</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color:rgb(229, 229, 229);</string>
-            </property>
-            <property name="verticalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOn</enum>
-            </property>
-            <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
-            </property>
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="scrollwidgets">
+            <widget class="QScrollArea" name="scrollArea">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>283</width>
-               <height>569</height>
+               <width>300</width>
+               <height>300</height>
               </rect>
              </property>
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>300</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>500</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color:rgb(229, 229, 229);</string>
+             </property>
+             <property name="verticalScrollBarPolicy">
+              <enum>Qt::ScrollBarAlwaysOn</enum>
+             </property>
+             <property name="horizontalScrollBarPolicy">
+              <enum>Qt::ScrollBarAlwaysOff</enum>
+             </property>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollwidgets">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>282</width>
+                <height>298</height>
+               </rect>
+              </property>
+             </widget>
             </widget>
            </widget>
           </widget>
@@ -1228,7 +1225,7 @@ QPushButton:pressed
      <x>0</x>
      <y>0</y>
      <width>1050</width>
-     <height>37</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuTomeo">
@@ -1244,7 +1241,7 @@ QPushButton:pressed
   <customwidget>
    <class>VideoWidget</class>
    <extends>QWidget</extends>
-   <header location="global">videowidget.h</header>
+   <header>videowidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

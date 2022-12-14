@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect (timer, SIGNAL (timeout()),SLOT (timedisplay()));
     connect (player, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (timechange()));
 
-    ui->centralwidget->setMouseTracking(true);
+    ui->videowidget->setMouseTracking(true);
 }
 
 std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
@@ -293,11 +293,11 @@ void MainWindow::on_large_clicked(){
     static QRect location;
     if(this->isFullScreen()){
         this->setGeometry(location);
-        ui->large->setIcon(QIcon(":/Icon/full.png"));
+        ui->large->setIcon(QIcon(":/pic/Maximize-2.png"));
     }else{
         location = this->geometry();
         this->showFullScreen();
-        ui->large->setIcon(QIcon(":/Icon/ifull.png"));
+        ui->large->setIcon(QIcon(":/pic/Minimize-2.png"));
     }
 }
 
@@ -439,6 +439,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event){
     Q_UNUSED(event);
     if(_isleft)
         _isleft = false;
+    qDebug()<<_isleft;
     setCursor(Qt::ArrowCursor);
 }
 
@@ -449,9 +450,10 @@ void MainWindow::mouseMoveEvent(QMouseEvent* event){
         return;
     int poss = countFlag(event->pos(), countRow(event->pos()));
     setCursorType(poss);
-    qDebug()<<poss<<Qt::endl;
+    qDebug()<<poss;
     if(_isleft){
         QPoint ptemp = event->globalPos();
+        qDebug()<<ptemp;
         ptemp = ptemp - _plast;
         if(_curpos == 22){
             ptemp = ptemp + pos();
