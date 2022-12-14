@@ -35,7 +35,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect (timer, SIGNAL (timeout()),SLOT (timedisplay()));
     connect (player, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (timechange()));
 
-    ui->videowidget->setMouseTracking(true);
+    ui->centralwidget->setMouseTracking(true);
+    setMouseTracking(true);
 }
 
 std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
@@ -446,11 +447,23 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event){
 //Restore the cursor style to the original style
 void MainWindow::mouseMoveEvent(QMouseEvent* event){
     Q_UNUSED(event);
+//    QPropertyAnimation *pAnimation = new QPropertyAnimation(ui->controlbar, "visible");
+//    pAnimation ->setDuration(2000);
+//    pAnimation ->setStartValue(0);
+//    pAnimation ->setEndValue(1);
+
     if(this->isFullScreen())
         return;
     int poss = countFlag(event->pos(), countRow(event->pos()));
     setCursorType(poss);
-    qDebug()<<poss;
+    qDebug()<<event->pos();
+    qDebug()<<frameGeometry().height();
+    if(event->pos().y()>frameGeometry().height()/3 && event->pos().x()>frameGeometry().width()/3){
+         ui->controlbar->setVisible(1);
+         //pAnimation ->start();
+    } else {
+        ui->controlbar->setVisible(0);
+    }
     if(_isleft){
         QPoint ptemp = event->globalPos();
         qDebug()<<ptemp;

@@ -29,6 +29,9 @@
      <height>800</height>
     </size>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QWidget" name="navbar" native="true">
@@ -43,6 +46,9 @@
         <width>16777215</width>
         <height>60</height>
        </size>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
@@ -319,6 +325,9 @@ QPushButton:pressed
         <height>40</height>
        </size>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <spacer name="horizontalSpacer_8">
@@ -431,6 +440,9 @@ font: 75 24pt &quot;Futura&quot;;</string>
         <height>16777215</height>
        </size>
       </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="3" rowspan="2">
         <widget class="QWidget" name="leftwidget" native="true">
@@ -446,6 +458,9 @@ font: 75 24pt &quot;Futura&quot;;</string>
            <height>1000</height>
           </size>
          </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <property name="leftMargin">
            <number>3</number>
@@ -457,6 +472,9 @@ font: 75 24pt &quot;Futura&quot;;</string>
               <width>400</width>
               <height>300</height>
              </size>
+            </property>
+            <property name="mouseTracking">
+             <bool>true</bool>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color:rgb(40, 40, 49);</string>
@@ -477,6 +495,9 @@ font: 75 24pt &quot;Futura&quot;;</string>
               <height>20</height>
              </size>
             </property>
+            <property name="mouseTracking">
+             <bool>true</bool>
+            </property>
             <layout class="QGridLayout" name="gridLayout_2">
              <item row="0" column="1">
               <widget class="QSlider" name="timeslider">
@@ -492,13 +513,16 @@ font: 75 24pt &quot;Futura&quot;;</string>
                  <height>20</height>
                 </size>
                </property>
+               <property name="mouseTracking">
+                <bool>true</bool>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
               </widget>
              </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="time1">
+             <item row="0" column="2">
+              <widget class="QLabel" name="time2">
                <property name="minimumSize">
                 <size>
                  <width>50</width>
@@ -525,8 +549,8 @@ font: 75 24pt &quot;Futura&quot;;</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="2">
-              <widget class="QLabel" name="time2">
+             <item row="0" column="0">
+              <widget class="QLabel" name="time1">
                <property name="minimumSize">
                 <size>
                  <width>50</width>
@@ -569,6 +593,9 @@ font: 75 24pt &quot;Futura&quot;;</string>
               <width>10000</width>
               <height>80</height>
              </size>
+            </property>
+            <property name="mouseTracking">
+             <bool>true</bool>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color:rgb(221, 221, 221);
@@ -1143,6 +1170,9 @@ QPushButton:pressed
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <widget class="QWidget" name="widget" native="true">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <widget class="Line" name="line">
             <property name="geometry">
              <rect>
@@ -1165,6 +1195,9 @@ QPushButton:pressed
               <height>301</height>
              </rect>
             </property>
+            <property name="mouseTracking">
+             <bool>true</bool>
+            </property>
             <widget class="QScrollArea" name="scrollArea">
              <property name="geometry">
               <rect>
@@ -1185,6 +1218,9 @@ QPushButton:pressed
                <width>500</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="mouseTracking">
+              <bool>true</bool>
              </property>
              <property name="styleSheet">
               <string notr="true">background-color:rgb(229, 229, 229);</string>

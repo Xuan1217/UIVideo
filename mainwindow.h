@@ -56,7 +56,7 @@ private slots:
     void on_screenshot_clicked();
     void set_name(int number);
     void keyPressEvent(QKeyEvent *event);
-//    void on_speed_clicked();
+//    void on_speed_clicked(); s
 
 private:
     Ui::MainWindow *ui;
