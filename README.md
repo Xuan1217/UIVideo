@@ -19,3 +19,4 @@
 
 12.14 Xiaokang Ye: Fix the bugs: mute button, scroll area; feat: add the controll bar show up automatically.
 
+12.14 Pengchen Chen: add function: right-click to display the minimenu

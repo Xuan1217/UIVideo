@@ -41,6 +41,7 @@ private slots:
     void on_zoom_clicked();
     void on_homebutton_clicked();
     void on_folder_clicked();
+    void onTaskBoxContextMenuEvent();
     void on_play_clicked();
     void on_voice_clicked();
     void timechange();

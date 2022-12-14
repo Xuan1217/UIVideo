@@ -130,9 +130,58 @@ void MainWindow::creatbuttonList(){
         button->init(&videos.at(i));
     }
     player->setContent(&buttons, &videos);
+
+    // Create new action
+    QAction* m_ActionFavourite = new QAction(tr("Add to favourite"), this);
+    QAction* m_ActionCategory = new QAction(tr("Set category"), this);
+    QAction* m_ActionRemove = new QAction(tr("Remove"), this);
+    QAction* m_ActionQuit = new QAction(tr("Exit"),this);
+
+    m_ActionFavourite->setData(1);
+    m_ActionCategory->setData(2);
+    m_ActionRemove->setData(3);
+
+    // add new action
+    addAction(m_ActionFavourite);
+    addAction(m_ActionCategory);
+    addAction(m_ActionRemove);
+
+    connect(m_ActionFavourite, SIGNAL(triggered()), this, SLOT(onTaskBoxContextMenuEvent()));
+    connect(m_ActionCategory, SIGNAL(triggered()), this, SLOT(onTaskBoxContextMenuEvent()));
+    connect(m_ActionRemove, SIGNAL(triggered()), this, SLOT(onTaskBoxContextMenuEvent()));
+
+    // add the seperate line
+    QAction* separator = new QAction();
+    separator->setSeparator(true);
+    addAction(separator);
+
+    addAction(m_ActionQuit);
+
+    setContextMenuPolicy(Qt::ActionsContextMenu);
 }
 
+void MainWindow::onTaskBoxContextMenuEvent() {
+    QAction *pEven = qobject_cast<QAction *>(this->sender());
+    //this->sender()  where the signal from
 
+    // get the signal 1: favourite; 2: Category; 3:Remove
+    int iType = pEven->data().toInt();
+
+    switch (iType)
+    {
+    case 1:
+        QMessageBox::about(this, "favourite", pEven->text());
+        break;
+    case 2:
+        QMessageBox::about(this, "category", pEven->text());
+        break;
+    case 3:
+        QMessageBox::about(this, "remove", pEven->text());
+        break;
+    default:
+        break;
+    }
+}
 
 void MainWindow::set_name(int number){
     QString name1 = player->getButtons()->at(number)->info->videoname;
@@ -270,7 +319,7 @@ void MainWindow::on_nextone_clicked(){
     if(playerindex == playernumbers-1)
         playerindex =  0;
     else
-         playerindex= playerindex+1;
+        playerindex= playerindex+1;
     set_name(playerindex);
     TheButtonInfo* button = player->getButtons()->at(playerindex)->info;
     player->jumpTo(button);

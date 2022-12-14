@@ -1054,7 +1054,7 @@ QPushButton:pressed
                </property>
                <property name="icon">
                 <iconset resource="resources.qrc">
-                 <normaloff>:/pic/裁剪 (1).png</normaloff>:/pic/裁剪 (1).png</iconset>
+                 <normaloff>:/pic/cut.png</normaloff>:/pic/cut.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1100,7 +1100,7 @@ QPushButton:pressed
                </property>
                <property name="icon">
                 <iconset resource="resources.qrc">
-                 <normaloff>:/pic/倍速播放.png</normaloff>:/pic/倍速播放.png</iconset>
+                 <normaloff>:/pic/speed.png</normaloff>:/pic/speed.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1239,7 +1239,7 @@ QPushButton:pressed
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>282</width>
+                <width>277</width>
                 <height>298</height>
                </rect>
               </property>
@@ -1261,7 +1261,7 @@ QPushButton:pressed
      <x>0</x>
      <y>0</y>
      <width>1050</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuTomeo">

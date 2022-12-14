@@ -9,7 +9,7 @@
         <file>pic/24gf-volumeHigh.png</file>
         <file>pic/24gf-volumeZero (1).png</file>
         <file>pic/24gf-volumeZero.png</file>
-        <file>pic/倍速播放.png</file>
+        <file>pic/speed.png</file>
         <file>pic/add.png</file>
         <file>pic/backward.png</file>
         <file>pic/danqu.png</file>
@@ -31,6 +31,6 @@
         <file>pic/video.png</file>
         <file>pic/Videotape-1.png</file>
         <file>pic/xunhuan.png</file>
-        <file>pic/裁剪 (1).png</file>
+        <file>pic/cut.png</file>
     </qresource>
 </RCC>
