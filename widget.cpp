@@ -17,7 +17,7 @@ Widget::Widget(QWidget *parent)
 
 
 
-    //Set volume progress bar
+    //Set volume progress bar登出
     connect(player,&QMediaPlayer::volumeChanged,ui->volumeslider,&QSlider::setValue);
     connect(ui->volumeslider,&QSlider::sliderMoved,player,&QMediaPlayer::setVolume);
     connect (player,SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (volumeStateChanged()));
@@ -85,11 +85,11 @@ void Widget::on_mute_clicked(){
     {
         case 0:
             player->setVolume(20);
-            ui->mute->setIcon(QIcon(":/icon/volumeHigh.png"));
+            ui->mute->setIcon(QIcon(":/icon/24gf-volumeHigh.png"));
             break;
         default:
             player->setVolume(0);
-            ui->mute->setIcon(QIcon(":/icon/volumeDisable.png"));
+            ui->mute->setIcon(QIcon(":/icon/24gf-volumeCross.png"));
             break;
     }
 }
@@ -143,24 +143,26 @@ void Widget::playerStateChanged (){
             ui->pause->setIcon(QIcon(":/icon/pause.png"));
             break;
     }
-    switch (player->volume()) {
-        case 0:
-            ui->mute->setIcon(QIcon(":/icon/volumeDisable.png"));
-            break;
-        default:
-            ui->mute->setIcon(QIcon(":/icon/volumeHigh.png"));
-            break;
-    }
+//    //std::cout  << player->volume();
+//    switch (player->volume()) {
+//        case 0:
+//            ui->mute->setIcon(QIcon(":/icon/volumeDisable.png"));
+//            break;
+//        default:
+//            ui->mute->setIcon(QIcon(":/icon/volumeHigh.png"));
+//            break;
+//    }
 }
 
 
 void Widget::volumeStateChanged (){
+    //std::cout  << player->volume();
     switch (player->volume()) {
         case 0:
-            ui->mute->setIcon(QIcon(":/icon/volumeDisable.png"));
+            ui->mute->setIcon(QIcon(":/icon/24gf-volumeZero.png"));
             break;
         default:
-            ui->mute->setIcon(QIcon(":/icon/volumeHigh.png"));
+            ui->mute->setIcon(QIcon(":/icon/24gf-volumeHigh.png"));
             break;
     }
 }

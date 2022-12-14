@@ -238,10 +238,10 @@ void MainWindow::timechange (){
 void MainWindow::voicechange (){
     switch (player->volume()) {
         case 0:
-            ui->voice->setIcon(QIcon(":/pic/24gf-volumeHigh.png"));
+            ui->voice->setIcon(QIcon(":/pic/24gf-volumeCross (1).png"));
             break;
         default:
-            ui->voice->setIcon(QIcon(":/pic/24gf-volumeCross (1).png"));
+            ui->voice->setIcon(QIcon(":/pic/24gf-volumeHigh.png"));
             break;
     }
 }
