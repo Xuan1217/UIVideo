@@ -70,7 +70,6 @@ private:
     int _curpos = 0;
     QPoint _plast;
     QString name;
-
     void creatbuttonList();
     void playMovie();
     std::vector<TheButtonInfo> getInfoIn (std::string loc);

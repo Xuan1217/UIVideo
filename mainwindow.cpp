@@ -34,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect( timer, SIGNAL (timeout()), SLOT(voicechange()));
     connect (timer, SIGNAL (timeout()),SLOT (timedisplay()));
     connect (player, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (timechange()));
+
+    ui->centralwidget->setMouseTracking(true);
 }
 
 std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
@@ -103,7 +105,7 @@ void MainWindow::getVideo(const std::string dirName) {
     }
 }
 
-void MainWindow::creatbuttonList() {
+void MainWindow::creatbuttonList(){
     // the QMediaPlayer which controls the playback
     QList<QPushButton*> btns =  ui->scrollwidgets->findChildren<QPushButton*>();
     foreach(QPushButton* btn, btns){
@@ -447,6 +449,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent* event){
         return;
     int poss = countFlag(event->pos(), countRow(event->pos()));
     setCursorType(poss);
+    qDebug()<<poss<<Qt::endl;
     if(_isleft){
         QPoint ptemp = event->globalPos();
         ptemp = ptemp - _plast;
