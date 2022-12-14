@@ -17,7 +17,5 @@
 
 12.12 Hang Sun: Responsive and fuction of change mode and screenshot
 
-12.14 Xiaokang Ye: Fix the bugs: mute button, scroll area
-
-
+12.14 Xiaokang Ye: Fix the bugs: mute button, scroll area; feat: add the controll bar show up automatically.
 
