@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "editwindow.h"
 
 //Window Display
 MainWindow::MainWindow(QWidget *parent)
@@ -640,4 +641,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
     if(event->key() == Qt::Key_Down || event->key() == Qt::Key_S){
         player->setVolume(player->volume()-5);
     }
+}
+
+void MainWindow::on_edit_clicked()
+{
+
+    EditWindow *edit = new EditWindow;
+    edit->show();
+
 }

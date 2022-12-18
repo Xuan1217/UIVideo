@@ -32,5 +32,9 @@
         <file>pic/Videotape-1.png</file>
         <file>pic/xunhuan.png</file>
         <file>pic/cut.png</file>
+        <file>pic/texiao.png</file>
+        <file>pic/tiaojie.png</file>
+        <file>pic/wenben.png</file>
+        <file>pic/yinyue.png</file>
     </qresource>
 </RCC>

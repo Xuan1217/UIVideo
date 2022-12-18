@@ -61,6 +61,8 @@ private slots:
     void ShowTaskBoxContextMenu(QPoint);
 //    void on_speed_clicked(); s
 
+    void on_edit_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::vector<TheButtonInfo> videos;
