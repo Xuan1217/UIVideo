@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect (timer, SIGNAL (timeout()),SLOT (timedisplay()));
     connect (player, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (timechange()));
 
+    //设置鼠标追踪
     ui->centralwidget->setMouseTracking(true);
     setMouseTracking(true);
 }
@@ -128,23 +129,34 @@ void MainWindow::creatbuttonList(){
         button->setIconSize(QSize(245, 140));
         layout->addWidget(button);
         button->init(&videos.at(i));
+        button->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(button, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(ShowTaskBoxContextMenu(QPoint)));
     }
     player->setContent(&buttons, &videos);
 
+
+
+}
+
+void MainWindow::ShowTaskBoxContextMenu(QPoint)
+{
+    TheButton* btn = qobject_cast<TheButton*>(sender());
+    //qDebug()<<btn->info->videoname;
+    QMenu *menu = new QMenu(ui->scrollArea);
     // Create new action
     QAction* m_ActionFavourite = new QAction(tr("Add to favourite"), this);
     QAction* m_ActionCategory = new QAction(tr("Set category"), this);
     QAction* m_ActionRemove = new QAction(tr("Remove"), this);
     QAction* m_ActionQuit = new QAction(tr("Exit"),this);
 
-    m_ActionFavourite->setData(1);
-    m_ActionCategory->setData(2);
-    m_ActionRemove->setData(3);
+    m_ActionFavourite->setData(btn->info->videoname+"1");
+    m_ActionCategory->setData(btn->info->videoname+"2");
+    m_ActionRemove->setData(btn->info->videoname+"3");
 
-    // add new action
-    addAction(m_ActionFavourite);
-    addAction(m_ActionCategory);
-    addAction(m_ActionRemove);
+    //add new action
+    menu->addAction(m_ActionFavourite);
+    menu->addAction(m_ActionCategory);
+    menu->addAction(m_ActionRemove);
 
     connect(m_ActionFavourite, SIGNAL(triggered()), this, SLOT(onTaskBoxContextMenuEvent()));
     connect(m_ActionCategory, SIGNAL(triggered()), this, SLOT(onTaskBoxContextMenuEvent()));
@@ -153,30 +165,37 @@ void MainWindow::creatbuttonList(){
     // add the seperate line
     QAction* separator = new QAction();
     separator->setSeparator(true);
-    addAction(separator);
+    menu->addAction(separator);
+    menu->addAction(m_ActionQuit);
 
-    addAction(m_ActionQuit);
-
-    setContextMenuPolicy(Qt::ActionsContextMenu);
+    menu->exec(QCursor::pos());
 }
 
-void MainWindow::onTaskBoxContextMenuEvent() {
-    QAction *pEven = qobject_cast<QAction *>(this->sender());
-    //this->sender()  where the signal from
-
-    // get the signal 1: favourite; 2: Category; 3:Remove
-    int iType = pEven->data().toInt();
+void MainWindow::onTaskBoxContextMenuEvent()
+{
+    QAction *pEven = qobject_cast<QAction *>(sender());
+    QString idata = pEven->data().toString();
+    int iType = idata.right(1).toInt();
+    idata.chop(1);
 
     switch (iType)
     {
     case 1:
-        QMessageBox::about(this, "favourite", pEven->text());
+        idata.insert(0, "add ");
+        idata.append(" to favourite!");
+        qDebug()<<idata;
+        QMessageBox::about(this, idata,idata);
         break;
     case 2:
-        QMessageBox::about(this, "category", pEven->text());
+        idata.insert(0, "add ");
+        idata.append(" to category!");
+        qDebug()<<idata;
+        QMessageBox::about(this, idata, idata);
         break;
     case 3:
-        QMessageBox::about(this, "remove", pEven->text());
+        idata.insert(0, "remove ");
+        qDebug()<<idata;
+        QMessageBox::about(this, idata, idata);
         break;
     default:
         break;

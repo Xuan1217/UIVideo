@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1050</width>
-    <height>817</height>
+    <height>820</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -879,6 +879,19 @@ QPushButton:pressed
               </widget>
              </item>
              <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QSlider" name="volumeslider">
                <property name="minimumSize">
                 <size>
@@ -896,19 +909,6 @@ QPushButton:pressed
                 <enum>Qt::Horizontal</enum>
                </property>
               </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
              </item>
              <item>
               <spacer name="horizontalSpacer_16">
@@ -1239,7 +1239,7 @@ QPushButton:pressed
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>277</width>
+                <width>282</width>
                 <height>298</height>
                </rect>
               </property>
@@ -1261,7 +1261,7 @@ QPushButton:pressed
      <x>0</x>
      <y>0</y>
      <width>1050</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuTomeo">

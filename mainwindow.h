@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "QtWidgets/qmenu.h"
 #include "buttons.h"
 #include "player.h"
 #include <QMainWindow>
@@ -57,6 +58,7 @@ private slots:
     void on_screenshot_clicked();
     void set_name(int number);
     void keyPressEvent(QKeyEvent *event);
+    void ShowTaskBoxContextMenu(QPoint);
 //    void on_speed_clicked(); s
 
 private:
@@ -81,5 +83,6 @@ private:
     int countRow(QPoint point);
     int countFlag(QPoint point, int row);
     void setCursorType (int check);
+    QMenu *m_rightClieckMenu;
 };
 #endif // MAINWINDOW_H
