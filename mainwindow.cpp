@@ -217,9 +217,18 @@ MainWindow::~MainWindow()
 
 //Button Operations
 void MainWindow::on_zoom_clicked(){
-    if(playernumbers == 0)
-        return;
-    ui->videowidget->setFullScreen(true);
+//    if(playernumbers == 0)
+//        return;
+//    ui->videowidget->setFullScreen(true);
+    if (ui->leftwidget->isFullScreen()) {
+        ui->zoom->setIcon(QIcon(":/pic/24gf-fullScreenEnter3.png"));
+        ui->leftwidget->setWindowFlags(Qt::SubWindow);
+        ui->leftwidget->showNormal();
+    } else {
+        ui->zoom->setIcon(QIcon(":/pic/smallsize.png"));
+        ui->leftwidget->setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
+        ui->leftwidget->showFullScreen();
+    }
 }
 
 void MainWindow::on_homebutton_clicked(){

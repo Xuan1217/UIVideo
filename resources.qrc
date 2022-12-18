@@ -36,5 +36,6 @@
         <file>pic/tiaojie.png</file>
         <file>pic/wenben.png</file>
         <file>pic/yinyue.png</file>
+        <file>pic/smallsize.png</file>
     </qresource>
 </RCC>

@@ -388,7 +388,6 @@ QPushButton:pressed
           <font>
            <family>Futura</family>
            <pointsize>24</pointsize>
-           <weight>9</weight>
            <italic>false</italic>
            <bold>false</bold>
           </font>
@@ -471,7 +470,7 @@ font: 75 24pt &quot;Futura&quot;;</string>
             <property name="minimumSize">
              <size>
               <width>400</width>
-              <height>300</height>
+              <height>650</height>
              </size>
             </property>
             <property name="mouseTracking">
@@ -1268,7 +1267,7 @@ QPushButton:pressed
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>303</width>
+                  <width>298</width>
                   <height>399</height>
                  </rect>
                 </property>
@@ -1483,7 +1482,7 @@ QPushButton:pressed
      <x>0</x>
      <y>0</y>
      <width>1101</width>
-     <height>37</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuTomeo">

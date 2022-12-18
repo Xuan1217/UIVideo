@@ -22,3 +22,5 @@
 12.14 Pengchen Chen: add function: right-click to display the minimenu
 
 12.18 Hang Sun: A New window of editting and class
+
+12.18 Pengchen Chen: Reformat the video play layout, edit the zoom function
