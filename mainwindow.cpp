@@ -45,7 +45,6 @@ std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
     std::vector<TheButtonInfo> out =  std::vector<TheButtonInfo>();
     QDir dir(QString::fromStdString(loc) );
     QDirIterator it(dir);
-
     //get dir name
     QString dirname=QString::fromStdString(loc);
     qDebug()<<dirname;
@@ -64,23 +63,65 @@ std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
 
             QString thumb = f.left( f .length() - 4) +".png";
             QString videoname = f.right(f .length() - dirlength - 1);
-            qDebug()<<videoname;
-            if (QFile(thumb).exists()) { // if a png thumbnail exists
-                QImageReader *imageReader = new QImageReader(thumb);
-                    QImage sprite = imageReader->read(); // read the thumbnail
-                    if (!sprite.isNull()) {
-                        QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
-                        QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
-                        out . push_back(TheButtonInfo( url , ico , videoname));
+            if(cate_mode==0){
+                //qDebug()<<"1";
+                if (QFile(thumb).exists()) { // if a png thumbnail exists
+                    QImageReader *imageReader = new QImageReader(thumb);
+                        QImage sprite = imageReader->read(); // read the thumbnail
+                        if (!sprite.isNull()) {
+                            QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
+                            QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
+                            out . push_back(TheButtonInfo( url , ico , videoname));
+                        } else {
+                            qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
+                        }
+                } else {
+                    qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
+                }
+            } else if (cate_mode==1){
+                //qDebug()<<"2";
+                for(auto name : cate_A){
+                    qDebug()<<name<<videoname;
+                    if(QString::compare(videoname, name)==0){
+                        if (QFile(thumb).exists()) { // if a png thumbnail exists
+                            QImageReader *imageReader = new QImageReader(thumb);
+                                QImage sprite = imageReader->read(); // read the thumbnail
+                                if (!sprite.isNull()) {
+                                    QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
+                                    QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
+                                    out . push_back(TheButtonInfo( url , ico , videoname));
+                                } else {
+                                    qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
+                                }
+                        } else {
+                            qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
+                        }
                     }
-                    else
-                        qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
+                }
+            } else  if (cate_mode==2){
+                //qDebug()<<"3";
+                for (auto name : cate_B){
+                    qDebug()<<name;
+                    if(QString::compare(videoname, name)==0){
+                        if (QFile(thumb).exists()) { // if a png thumbnail exists
+                            QImageReader *imageReader = new QImageReader(thumb);
+                                QImage sprite = imageReader->read(); // read the thumbnail
+                                if (!sprite.isNull()) {
+                                    QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
+                                    QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
+                                    out . push_back(TheButtonInfo( url , ico , videoname));
+                                }
+                                else
+                                    qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
+                        }
+                        else
+                            qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
+                    }
+                }
             }
-            else
-                qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
         }
     }
-    qDebug()<<out.size();
+    qDebug()<<"out size:"<<out.size();
     playernumbers = out.size();
     return out;
 }
@@ -88,11 +129,10 @@ std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
 void MainWindow::getVideo(const std::string dirName) {
     // let's just check that Qt is operational first
     qDebug() << "Qt version: " << QT_VERSION_STR;
-
+    this->loc = dirName;
     // collect all the videos in the folder
     videos.clear();
     videos = getInfoIn(dirName);
-
     if (videos.size() == 0) {
         const int result = QMessageBox::question(
                     nullptr,
@@ -134,9 +174,6 @@ void MainWindow::creatbuttonList(){
         connect(button, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(ShowTaskBoxContextMenu(QPoint)));
     }
     player->setContent(&buttons, &videos);
-
-
-
 }
 
 void MainWindow::ShowTaskBoxContextMenu(QPoint)
@@ -145,8 +182,8 @@ void MainWindow::ShowTaskBoxContextMenu(QPoint)
     //qDebug()<<btn->info->videoname;
     QMenu *menu = new QMenu(ui->scrollArea);
     // Create new action
-    QAction* m_ActionFavourite = new QAction(tr("Add to favourite"), this);
-    QAction* m_ActionCategory = new QAction(tr("Set category"), this);
+    QAction* m_ActionFavourite = new QAction(tr("Add to category A"), this);
+    QAction* m_ActionCategory = new QAction(tr("Add to category B"), this);
     QAction* m_ActionRemove = new QAction(tr("Remove"), this);
     QAction* m_ActionQuit = new QAction(tr("Exit"),this);
 
@@ -178,24 +215,28 @@ void MainWindow::onTaskBoxContextMenuEvent()
     QString idata = pEven->data().toString();
     int iType = idata.right(1).toInt();
     idata.chop(1);
-
+    QString fname = idata;
     switch (iType)
     {
     case 1:
         idata.insert(0, "add ");
-        idata.append(" to favourite!");
-        qDebug()<<idata;
-        QMessageBox::about(this, idata,idata);
+        idata.append(" to category A!");
+        //qDebug()<<idata;
+        QMessageBox::about(this, idata, idata);
+        cate_A.push_back(fname);
+        qDebug()<<cate_A;
         break;
     case 2:
         idata.insert(0, "add ");
-        idata.append(" to category!");
-        qDebug()<<idata;
+        idata.append(" to category B!");
+        //qDebug()<<idata;
         QMessageBox::about(this, idata, idata);
+        cate_B.push_back(fname);
+        qDebug()<<cate_B;
         break;
     case 3:
         idata.insert(0, "remove ");
-        qDebug()<<idata;
+        //qDebug()<<idata;
         QMessageBox::about(this, idata, idata);
         break;
     default:
@@ -216,6 +257,21 @@ MainWindow::~MainWindow()
 }
 
 //Button Operations
+void MainWindow::on_all_clicked(){
+    this->cate_mode=0;
+    getVideo(this->loc);
+    creatbuttonList();
+}
+void MainWindow::on_all_2_clicked(){
+    this->cate_mode=1;
+    getVideo(this->loc);
+    creatbuttonList();
+}
+void MainWindow::on_all_3_clicked(){
+    this->cate_mode=2;
+    getVideo(this->loc);
+    creatbuttonList();
+}
 void MainWindow::on_zoom_clicked(){
 //    if(playernumbers == 0)
 //        return;

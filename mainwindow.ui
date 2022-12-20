@@ -1267,7 +1267,7 @@ QPushButton:pressed
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>298</width>
+                  <width>303</width>
                   <height>399</height>
                  </rect>
                 </property>
@@ -1482,7 +1482,7 @@ QPushButton:pressed
      <x>0</x>
      <y>0</y>
      <width>1101</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuTomeo">

@@ -54,6 +54,9 @@ private slots:
     void on_lastone_clicked();
     void on_large_clicked();
     void on_sequence_clicked();
+    void on_all_clicked();
+    void on_all_2_clicked();
+    void on_all_3_clicked();
     void sequence_play();
     void on_screenshot_clicked();
     void set_name(int number);
@@ -86,5 +89,9 @@ private:
     int countFlag(QPoint point, int row);
     void setCursorType (int check);
     QMenu *m_rightClieckMenu;
+    std::vector<QString> cate_A;
+    std::vector<QString> cate_B;
+    int cate_mode = 0;
+    std::string loc;
 };
 #endif // MAINWINDOW_H
