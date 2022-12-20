@@ -28,3 +28,5 @@
 12.19 Pengchen Chen: Fix the bug about the title of the video
 
 12.19 Xiaokang Ye: Add categories
+
+12.19 Hang Sun: New UI
