@@ -284,6 +284,11 @@ void MainWindow::on_zoom_clicked(){
         ui->zoom->setIcon(QIcon(":/pic/smallsize.png"));
         ui->leftwidget->setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
         ui->leftwidget->showFullScreen();
+        ui->controlbar->setVisible(0);
+//        QMouseEvent *event = nullptr;
+//        if (event->MouseMove) {
+//            ui->controlbar->setVisible(1);
+//        }
     }
 }
 
@@ -586,18 +591,27 @@ void MainWindow::mouseMoveEvent(QMouseEvent* event){
 //    pAnimation ->setStartValue(0);
 //    pAnimation ->setEndValue(1);
 
-    if(this->isFullScreen())
-        return;
+//    if(this->isFullScreen())
+//        return;
     int poss = countFlag(event->pos(), countRow(event->pos()));
     setCursorType(poss);
     qDebug()<<event->pos();
     qDebug()<<frameGeometry().height();
-    if(event->pos().y()>frameGeometry().height()/3 && event->pos().x()>frameGeometry().width()/3){
-         ui->controlbar->setVisible(1);
-         //pAnimation ->start();
-    } else {
-        ui->controlbar->setVisible(0);
-    }
+//    if (ui->leftwidget->isFullScreen()) {
+//        if(event->pos().y()>frameGeometry().height()/3 && event->pos().x()>frameGeometry().width()/3) {
+//            ui->controlbar->setVisible(1);
+//        } else {
+//            ui->controlbar->setVisible(0);
+//        }
+//    } else {
+        if(event->pos().y()>frameGeometry().height()/3 && event->pos().x()>frameGeometry().width()/3){
+            ui->controlbar->setVisible(1);
+             //pAnimation ->start();
+        } else {
+            ui->controlbar->setVisible(0);
+        }
+//    }
+
     if(_isleft){
         QPoint ptemp = event->globalPos();
         qDebug()<<ptemp;

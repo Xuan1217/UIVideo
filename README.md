@@ -30,3 +30,5 @@
 12.19 Xiaokang Ye: Add categories
 
 12.19 Hang Sun: New UI
+
+12.19 Pengchen Chen: Small changes of video controlbar UI
