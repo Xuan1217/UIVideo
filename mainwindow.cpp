@@ -61,23 +61,23 @@ std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
             if (f.contains(".mp4") || f.contains("MOV"))  { // mac/linux
 #endif
 
-            QString thumb = f.left( f .length() - 4) +".png";
-            QString videoname = f.right(f .length() - dirlength - 1);
+            QString thumb = f.left(f.length() - 4) +".png";
+            QString videoname = f.right(f.length() - dirlength - 1);
             if(cate_mode==0){
                 //qDebug()<<"1";
-                if (QFile(thumb).exists()) { // if a png thumbnail exists
-                    QImageReader *imageReader = new QImageReader(thumb);
-                        QImage sprite = imageReader->read(); // read the thumbnail
-                        if (!sprite.isNull()) {
-                            QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
-                            QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
-                            out . push_back(TheButtonInfo( url , ico , videoname));
-                        } else {
-                            qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
-                        }
-                } else {
-                    qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
-                }
+            if (QFile(thumb).exists()) { // if a png thumbnail exists
+                QImageReader *imageReader = new QImageReader(thumb);
+                    QImage sprite = imageReader->read(); // read the thumbnail
+                    if (!sprite.isNull()) {
+                        QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
+                        QUrl* url = new QUrl(QUrl::fromLocalFile(f)); // convert the file location to a generic url
+                        out.push_back(TheButtonInfo(url, ico, videoname));
+                    } else{
+                        qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
+                    }
+            } else {
+                qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
+            }
             } else if (cate_mode==1){
                 //qDebug()<<"2";
                 for(auto name : cate_A){
@@ -163,7 +163,7 @@ void MainWindow::creatbuttonList(){
         button->index = i;
         button->connect(button, SIGNAL(jumpTo(TheButtonInfo* )), player, SLOT (jumpTo(TheButtonInfo*))); // when clicked, tell the player to play.
         button->connect(button, SIGNAL(returnindex(int)), this, SLOT (getbuttonindex(int)));
-        button->connect (button, SIGNAL(returnindex(int)), this, SLOT (setVideoTitle(int)));
+        button->connect (button, SIGNAL(returnindex(int)), this, SLOT (set_name(int)));
         buttons.push_back(button);
         button->setFlat(true);
         button->setFocusPolicy(Qt::NoFocus);

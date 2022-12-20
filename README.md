@@ -24,3 +24,5 @@
 12.18 Hang Sun: A New window of editting and class
 
 12.18 Pengchen Chen: Reformat the video play layout, edit the zoom function
+
+12.29 Pengchen Chen: fix the bug about the title of the video
