@@ -25,7 +25,6 @@
 
 12.18 Pengchen Chen: Reformat the video play layout, edit the zoom function
 
-12.19 Pengchen Chen: F
-ix the bug about the title of the video
+12.19 Pengchen Chen: Fix the bug about the title of the video
 
 12.19 Xiaokang Ye: Add categories
