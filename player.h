@@ -27,7 +27,6 @@ public:
         setVolume(0); // be slightly less annoying
         // connect (this, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (playStateChanged(QMediaPlayer::State)) );
     }
-
     // all buttons have been setup, store pointers here
     void setContent(std::vector<TheButton*>* b, std::vector<TheButtonInfo>* i);
     std::vector<TheButton*>* getButtons() {return buttons;}
