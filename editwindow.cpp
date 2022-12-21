@@ -98,8 +98,14 @@ void EditWindow::creatbuttonList(){
         delete btn;
     }
     delete ui->scrollwidgets->layout();
-    QVBoxLayout *layout = new QVBoxLayout();
+    QGridLayout *layout = new QGridLayout();
     ui->scrollwidgets->setLayout(layout);
+    int width = ui->scrollwidgets->width();
+    qDebug()<<"width:"<<width;
+    int row_m = width/125;
+    qDebug()<<"width:"<<row_m;
+    int row_p = 0;
+    int col_p = 0;
     buttons.clear();
     for ( int i = 0; i < playernumbers; i++ ) {
         TheButton *button = new TheButton(ui->scrollwidgets);
@@ -110,8 +116,16 @@ void EditWindow::creatbuttonList(){
         buttons.push_back(button);
         button->setFlat(true);
         button->setFocusPolicy(Qt::NoFocus);
-        button->setIconSize(QSize(245, 140));
-        layout->addWidget(button);
+        button->setIconSize(QSize(125, 80));
+        qDebug()<<row_p<<col_p;
+        if(row_p==row_m){
+            layout->addWidget(button,col_p,row_p,1,1);
+            row_p=0;
+            col_p+=1;
+        } else {
+            layout->addWidget(button,col_p,row_p,1,1);
+            row_p+=1;
+        }
         button->init(&videos.at(i));
         button->setContextMenuPolicy(Qt::CustomContextMenu);
         connect(button, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(ShowTaskBoxContextMenu(QPoint)));
