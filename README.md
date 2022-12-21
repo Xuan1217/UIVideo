@@ -33,5 +33,5 @@
 
 12.19 Pengchen Chen: Small changes of video controlbar UI
 
-12.21 Xiaokang Ye: Editor page import videos
+12.21 Xiaokang Ye: Editor page import videos, fix homepage scrollarea
 
