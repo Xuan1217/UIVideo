@@ -544,21 +544,21 @@ void MainWindow::on_screenshot_clicked(){
 }
 
 
-//void MainWindow::on_speed_clicked()
-//{
-//    if(rate==1)
-//        {
-//            qDebug()<<player->playbackRate();
-//            player->setPlaybackRate(2);
-//            rate = 2;
-//        }
-//        else
-//        {
-//            qDebug()<<player->playbackRate();
-//            player->setPlaybackRate(1);
-//            rate = 1;
-//        }
-//}
+void MainWindow::on_speed_clicked()
+{
+    if(rate==1)
+        {
+        //    qDebug()<<player->playbackRate();
+            player->setPlaybackRate(2);
+            rate = 2;
+        }
+        else
+        {
+           // qDebug()<<player->playbackRate();
+            player->setPlaybackRate(1);
+            rate = 1;
+        }
+}
 
 //mouse event to zoom in and zoom out
 
