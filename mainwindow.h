@@ -25,6 +25,7 @@
 #include <QtCore/QDir>
 #include <QtCore/QDirIterator>
 #include <QScreen>
+#include <QApplication>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -62,7 +63,7 @@ private slots:
     void set_name(int number);
     void keyPressEvent(QKeyEvent *event);
     void ShowTaskBoxContextMenu(QPoint);
-    void on_speed_clicked();
+//    void on_speed_clicked(); s
 
     void on_edit_clicked();
 
@@ -93,6 +94,6 @@ private:
     std::vector<QString> cate_B;
     int cate_mode = 0;
     std::string loc;
-    int rate = 1;
+    QRect videorect;
 };
 #endif // MAINWINDOW_H

@@ -40,9 +40,6 @@ MainWindow::MainWindow(QWidget *parent)
     //设置鼠标追踪
     ui->centralwidget->setMouseTracking(true);
     setMouseTracking(true);
-
-    int leftwidgetwidth = ui->leftwidget->width();
-    ui->controlbar->setGeometry((leftwidgetwidth/2)-150,100,300,120);
 }
 
 std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
@@ -51,9 +48,9 @@ std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
     QDirIterator it(dir);
     //get dir name
     QString dirname=QString::fromStdString(loc);
-    qDebug()<<dirname;
+    //qDebug()<<dirname;
     int dirlength = dirname.length();
-    qDebug()<<dirlength;
+    //qDebug()<<dirlength;
 
     while (it.hasNext()) {
         QString f = it.next();
@@ -105,7 +102,7 @@ std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
             } else  if (cate_mode==2){
                 //qDebug()<<"3";
                 for (auto name : cate_B){
-                    qDebug()<<name;
+                    //()<<name;
                     if(QString::compare(videoname, name)==0){
                         if (QFile(thumb).exists()) { // if a png thumbnail exists
                             QImageReader *imageReader = new QImageReader(thumb);
@@ -228,7 +225,7 @@ void MainWindow::onTaskBoxContextMenuEvent()
         //qDebug()<<idata;
         QMessageBox::about(this, idata, idata);
         cate_A.push_back(fname);
-        qDebug()<<cate_A;
+        //qDebug()<<cate_A;
         break;
     case 2:
         idata.insert(0, "add ");
@@ -236,7 +233,7 @@ void MainWindow::onTaskBoxContextMenuEvent()
         //qDebug()<<idata;
         QMessageBox::about(this, idata, idata);
         cate_B.push_back(fname);
-        qDebug()<<cate_B;
+        //qDebug()<<cate_B;
         break;
     case 3:
         idata.insert(0, "remove ");
@@ -277,14 +274,23 @@ void MainWindow::on_all_3_clicked(){
     creatbuttonList();
 }
 void MainWindow::on_zoom_clicked(){
+//    if(playernumbers == 0)
+//        return;
+//    ui->videowidget->setFullScreen(true);
     if (ui->videowidget->isFullScreen()) {
-        //ui->zoom->setIcon(QIcon(":/pic/24gf-fullScreenEnter3.png"));
+        ui->zoom->setIcon(QIcon(":/pic/24gf-fullScreenEnter3.png"));
         ui->videowidget->setWindowFlags(Qt::SubWindow);
         ui->videowidget->showNormal();
+        ui->controlbar->setWindowFlags(Qt::SubWindow);
+        ui->controlbar->showNormal();
     } else {
-        //ui->zoom->setIcon(QIcon(":/pic/smallsize.png"));
+        videorect = ui->widget->geometry();
+        ui->zoom->setIcon(QIcon(":/pic/smallsize.png"));
         ui->videowidget->setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
         ui->videowidget->showFullScreen();
+        ui->controlbar->setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
+        ui->controlbar->showFullScreen();
+        //ui->controlbar->move(100,100);
     }
 }
 
@@ -538,21 +544,21 @@ void MainWindow::on_screenshot_clicked(){
 }
 
 
-void MainWindow::on_speed_clicked()
-{
-    if(rate==1)
-        {
-         //   qDebug()<<player->playbackRate();
-            player->setPlaybackRate(2);
-            rate = 2;
-        }
-        else
-        {
-          //  qDebug()<<player->playbackRate();
-            player->setPlaybackRate(1);
-            rate = 1;
-        }
-}
+//void MainWindow::on_speed_clicked()
+//{
+//    if(rate==1)
+//        {
+//            qDebug()<<player->playbackRate();
+//            player->setPlaybackRate(2);
+//            rate = 2;
+//        }
+//        else
+//        {
+//            qDebug()<<player->playbackRate();
+//            player->setPlaybackRate(1);
+//            rate = 1;
+//        }
+//}
 
 //mouse event to zoom in and zoom out
 
@@ -572,7 +578,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event){
     Q_UNUSED(event);
     if(_isleft)
         _isleft = false;
- //   qDebug()<<_isleft;
+    qDebug()<<_isleft;
     setCursor(Qt::ArrowCursor);
 }
 
@@ -588,8 +594,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent* event){
 //        return;
     int poss = countFlag(event->pos(), countRow(event->pos()));
     setCursorType(poss);
-//    qDebug()<<event->pos();
-//    qDebug()<<frameGeometry().height();
+    //qDebug()<<event->pos();
+    //qDebug()<<frameGeometry().height();
 //    if (ui->leftwidget->isFullScreen()) {
 //        if(event->pos().y()>frameGeometry().height()/3 && event->pos().x()>frameGeometry().width()/3) {
 //            ui->controlbar->setVisible(1);
@@ -718,6 +724,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
 
 void MainWindow::on_edit_clicked()
 {
+
     EditWindow *edit = new EditWindow;
     edit->show();
+
 }

@@ -35,5 +35,3 @@
 
 12.21 Xiaokang Ye: Editor page import videos, fix homepage scrollarea
 
-12.22 Hang Sun: New User UI and search
-
