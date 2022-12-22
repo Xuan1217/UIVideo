@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "editwindow.h"
+#include "userwindow.h"
 
 //Window Display
 MainWindow::MainWindow(QWidget *parent)
@@ -293,11 +294,8 @@ void MainWindow::on_zoom_clicked(){
 }
 
 void MainWindow::on_homebutton_clicked(){
-    QMessageBox::question(
-        nullptr,
-        QString("Sorry"),
-        QString("There is no link embeded in the app. "),
-        QMessageBox::Yes);
+    userwindow *user = new userwindow;
+    user->show();
 }
 
 void MainWindow::on_folder_clicked(){
@@ -721,6 +719,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         player->setVolume(player->volume()-5);
     }
 }
+
 
 void MainWindow::on_edit_clicked()
 {

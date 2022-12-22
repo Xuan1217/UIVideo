@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     player.cpp \
+    userwindow.cpp \
     videowidget.cpp
 
 HEADERS += \
@@ -21,11 +22,13 @@ HEADERS += \
     editwindow.h \
     mainwindow.h \
     player.h \
+    userwindow.h \
     videowidget.h
 
 FORMS += \
     editwindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    userwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

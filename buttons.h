@@ -7,6 +7,10 @@
 
 #include <QPushButton>
 #include <QUrl>
+#include <QtWidgets/QLineEdit>
+#include <QString>
+
+#include <vector>
 
 class TheButtonInfo {
 
@@ -39,5 +43,6 @@ signals:
     void jumpTo(TheButtonInfo*);
     void returnindex(int index);
 };
+\
 
 #endif //BUTTONS_H

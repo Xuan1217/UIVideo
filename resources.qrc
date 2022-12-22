@@ -37,5 +37,11 @@
         <file>pic/wenben.png</file>
         <file>pic/yinyue.png</file>
         <file>pic/smallsize.png</file>
+        <file>pic/lvjing.png</file>
+        <file>pic/split-h.png</file>
+        <file>pic/delete.png</file>
+        <file>pic/musics.png</file>
+        <file>pic/lock.png</file>
+        <file>pic/search.png</file>
     </qresource>
 </RCC>
