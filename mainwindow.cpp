@@ -420,9 +420,9 @@ void MainWindow::on_lastone_clicked(){
     if(playernumbers == 0)
         return;
     if(playerindex == 0)
-        playerindex =  playernumbers-1;
+        playerindex = playernumbers-1;
     else
-         playerindex= playerindex-1;
+        playerindex = playerindex-1;
     set_name(playerindex);
     TheButtonInfo* button = player->getButtons()->at(playerindex)->info;
     player->jumpTo(button);
@@ -432,7 +432,7 @@ void MainWindow::on_lastone_clicked(){
 void MainWindow::on_large_clicked(){
     static QRect location;
     if(this->isFullScreen()){
-        this->setGeometry(location);
+        this->showNormal();
         ui->large->setIcon(QIcon(":/pic/Maximize-2.png"));
     }else{
         location = this->geometry();
