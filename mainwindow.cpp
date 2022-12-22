@@ -81,45 +81,51 @@ std::vector<TheButtonInfo> MainWindow::getInfoIn (std::string loc) {
             }
             } else if (cate_mode==1){
                 //qDebug()<<"2";
-                for(auto name : cate_A){
-                    qDebug()<<name<<videoname;
-                    if(QString::compare(videoname, name)==0){
-                        if (QFile(thumb).exists()) { // if a png thumbnail exists
-                            QImageReader *imageReader = new QImageReader(thumb);
-                                QImage sprite = imageReader->read(); // read the thumbnail
-                                if (!sprite.isNull()) {
-                                    QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
-                                    QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
-                                    out . push_back(TheButtonInfo( url , ico , videoname));
-                                } else {
-                                    qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
-                                }
-                        } else {
-                            qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
+                if(cate_A.size()!=0){
+                    for(auto name : cate_A){
+                        qDebug()<<name<<videoname;
+                        if(QString::compare(videoname, name)==0){
+                            if (QFile(thumb).exists()) { // if a png thumbnail exists
+                                QImageReader *imageReader = new QImageReader(thumb);
+                                    QImage sprite = imageReader->read(); // read the thumbnail
+                                    if (!sprite.isNull()) {
+                                        QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
+                                        QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
+                                        out . push_back(TheButtonInfo( url , ico , videoname));
+                                    } else {
+                                        qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
+                                    }
+                            } else {
+                                qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
+                            }
                         }
                     }
+
                 }
             } else  if (cate_mode==2){
                 //qDebug()<<"3";
-                for (auto name : cate_B){
-                    //()<<name;
-                    if(QString::compare(videoname, name)==0){
-                        if (QFile(thumb).exists()) { // if a png thumbnail exists
-                            QImageReader *imageReader = new QImageReader(thumb);
-                                QImage sprite = imageReader->read(); // read the thumbnail
-                                if (!sprite.isNull()) {
-                                    QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
-                                    QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
-                                    out . push_back(TheButtonInfo( url , ico , videoname));
-                                }
-                                else
-                                    qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
+                if(cate_B.size()!=0){
+                    for (auto name : cate_B){
+                        //()<<name;
+                        if(QString::compare(videoname, name)==0){
+                            if (QFile(thumb).exists()) { // if a png thumbnail exists
+                                QImageReader *imageReader = new QImageReader(thumb);
+                                    QImage sprite = imageReader->read(); // read the thumbnail
+                                    if (!sprite.isNull()) {
+                                        QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
+                                        QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
+                                        out . push_back(TheButtonInfo( url , ico , videoname));
+                                    }
+                                    else
+                                        qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb;
+                            }
+                            else
+                                qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
                         }
-                        else
-                            qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb;
                     }
+
                 }
-            }
+}
         }
     }
     qDebug()<<"out size:"<<out.size();
@@ -260,18 +266,25 @@ MainWindow::~MainWindow()
 //Button Operations
 void MainWindow::on_all_clicked(){
     this->cate_mode=0;
-    getVideo(this->loc);
-    creatbuttonList();
+    if(!videos.empty()){
+        getVideo(this->loc);
+        creatbuttonList();
+    }
 }
 void MainWindow::on_all_2_clicked(){
     this->cate_mode=1;
-    getVideo(this->loc);
-    creatbuttonList();
+    if(cate_A.size()>0){
+        getVideo(this->loc);
+        creatbuttonList();
+    }
+
 }
 void MainWindow::on_all_3_clicked(){
     this->cate_mode=2;
-    getVideo(this->loc);
-    creatbuttonList();
+    if(cate_B.size()>1){
+        getVideo(this->loc);
+        creatbuttonList();
+    }
 }
 void MainWindow::on_zoom_clicked(){
 //    if(playernumbers == 0)
