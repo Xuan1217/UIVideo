@@ -35,3 +35,5 @@
 
 12.21 Xiaokang Ye: Editor page import videos, fix homepage scrollarea
 
+12.22 Xiaokang Ye: pref whole window.
+
