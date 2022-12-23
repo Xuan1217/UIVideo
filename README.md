@@ -37,3 +37,4 @@
 
 12.22 Xiaokang Ye: pref whole window.
 
+12.22 Hang Sun: New User UI and search
